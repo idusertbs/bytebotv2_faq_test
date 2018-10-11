@@ -35,6 +35,7 @@ def makeResponse(req):
     parameters = queryResult.get("parameters")
     intent = queryResult.get("intent")
     intentDisplayName = intent.get("displayName")
+    queryText = queryResult.get("queryText")
 
     flagRequiereParametro = False
     if intentDisplayName.find("unico") or len(parameters):
@@ -46,7 +47,18 @@ def makeResponse(req):
 
     return {
         "fulfillmentText":"Hola desde el webhook v2 xd" ,        
-        "source":"example.com"
+        "source":"example.com",
+        "outputContexts": [{
+        "name": "projects/bytebot-faq-demo-1/agent/sessions/30739716-36e5-8e8b-1758-584c5419e3f1/contexts/context name",
+        "lifespanCount": 5,
+        "parameters": {
+        "pregunta": queryText
+
+}
+
+}
+
+]
         
     }
     
