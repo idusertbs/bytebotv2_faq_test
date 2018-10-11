@@ -48,9 +48,7 @@ def makeResponse(req):
         "fulfillmentText":"Hola desde el webhook v2 xd" ,
         "fulfillmentMessages":[  
             {  
-                "text":[  
-                    "text response"
-                ]
+                "text":[  'text response']
             }
         ],
         "source":"example.com"
