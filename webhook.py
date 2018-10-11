@@ -46,11 +46,10 @@ def makeResponse(req):
 
     return {
         "fulfillmentText":"Hola desde el webhook v2 xd" ,
-        "fulfillmentMessages":[  
-            {  
-                "text":[  'text response']
-            }
-        ],
+        "fulfillmentMessages":[{"simpleResponses": {"simpleResponses": [   {
+            "textToSpeech": "response text",
+            "displayText": "response text"
+        }]}}],
         "source":"example.com"
         
     }
