@@ -45,101 +45,10 @@ def makeResponse(req):
     #Proceso de recolección de parámetro:
 
     return {
-
-"fulfillmentText": "displayed&spoken response",
-
-"fulfillmentMessages": [
-
-{
-
-"text": {
-
-"text":     
-[
-
-"text response"
-
-]}
-
-}
-
-],
-
-"source": "example.com",
-
-"payload": {
-
-"google": {
-
-"expectUserResponse": True,
-
-"richResponse": {
-
-"items": [
-
-{
-
-"simpleResponse": {
-
-"textToSpeech": "this is a simple response"
-
-}
-
-}
-
-]
-
-}
-
-},
-
-"facebook": {
-
-"text": "Hello, Facebook!"
-
-},
-
-"slack": {
-
-"text": "This is a text response for Slack."
-
-}
-
-},
-
-"outputContexts": [
-
-{
-
-"name": "aa",
-
-"lifespanCount": 5,
-
-"parameters": {
-
-"param": "param value"
-
-}
-
-}
-
-],
-
-"followupEventInput": {
-
-"name": "event name",
-
-"languageCode": "en-US",
-
-"parameters": {
-
-"param": "param value"
-
-}
-
-}
-
-}
+        "fulfillmentText":"Hola desde el webhook v2 xd" ,        
+        "source":"example.com"
+        
+    }
     
 
 
