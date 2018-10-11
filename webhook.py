@@ -52,11 +52,8 @@ def makeResponse(req):
 
 {
 
-"text": [
-
+"text": 
 "text response"
-
-],
 
 }
 
