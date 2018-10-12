@@ -41,7 +41,7 @@ def makeResponse(req):
     if intentDisplayName.find("unico") >= 0 or len(parameters) > 0:
         flagRequiereParametro = False
     else:
-        flagRequiereParametro = True 
+        flagRequiereParametro = True
 
     #Proceso de recolección de parámetro:
     if flagRequiereParametro:
@@ -51,7 +51,7 @@ def makeResponse(req):
         "outputContexts": [
                 {
                 "name": "projects/bytebot-faq-demo-1/agent/sessions/30739716-36e5-8e8b-1758-584c5419e3f1/contexts/memoria_total",
-                "lifespanCount": 5,
+                "lifespanCount": 1,
                 "parameters": {
                     "pregunta": queryText
                 }
@@ -60,22 +60,51 @@ def makeResponse(req):
 
     else:
         #Proceso de reformulación
-
+        #Se debe extraer la pregunta de la memoria_total: parámetro "pregunta"
         #####
 
-        return {
-        "fulfillmentText":"La respuesta es:" ,        
-        "source":"example.com",
-        "outputContexts": [
-            {
-            "name": "projects/bytebot-faq-demo-1/agent/sessions/30739716-36e5-8e8b-1758-584c5419e3f1/contexts/memoria_1",
-            "lifespanCount": 5,
-            "parameters": {
-                "pregunta": queryText
-                }
-        }]        
-        }
+        outputContexts = queryResult.get("outputContexts")
+        for element in outputContexts:
+            if element.get("name").find("context_name"):
+                pregunta = element.get("parameters").get("pregunta")
+                producto = element.get("parameters").get("producto")
+                break
+            else:
+                pregunta = False
+                
+        if pregunta:
+            return {
+            "fulfillmentText": pregunta +  " - " + producto,        
+            "source":"example.com",
+            "outputContexts": [
+                {
+                "name": "projects/bytebot-faq-demo-1/agent/sessions/30739716-36e5-8e8b-1758-584c5419e3f1/contexts/memoria_1",
+                "lifespanCount": 5,
+                "parameters": {
+                    "pregunta": queryText
+                    }
+            }]        
+            }
+        else:
+            return {
+            "fulfillmentText":"La respuesta es:" ,        
+            "source":"example.com",
+            "outputContexts": [
+                {
+                "name": "projects/bytebot-faq-demo-1/agent/sessions/30739716-36e5-8e8b-1758-584c5419e3f1/contexts/memoria_1",
+                "lifespanCount": 5,
+                "parameters": {
+                    "pregunta": queryText
+                    }
+            }]        
+            }
 
+    
+
+
+
+        #Va al servicio de Ranking.
+        
 
 
     
