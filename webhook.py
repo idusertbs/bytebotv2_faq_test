@@ -38,7 +38,7 @@ def makeResponse(req):
     queryText = queryResult.get("queryText")
 
     flagRequiereParametro = False
-    if intentDisplayName.find("unico") or len(parameters) > 0:
+    if intentDisplayName.find("unico") >= 0 or len(parameters) > 0:
         flagRequiereParametro = False
     else:
         flagRequiereParametro = True 
