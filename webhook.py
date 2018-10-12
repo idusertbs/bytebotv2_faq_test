@@ -111,7 +111,7 @@ def makeResponse(req):
             }
         else:
             return {
-            "fulfillmentText": "Concatenando: " + pregunta +  " + " + producto,
+            "fulfillmentText": "Enviando al ranking: " + queryText,
             "source":"example.com",
             "outputContexts": [
                 {
