@@ -51,7 +51,7 @@ def makeResponse(req):
         "outputContexts": [
                 {
                 "name": "projects/bytebot-faq-demo-1/agent/sessions/30739716-36e5-8e8b-1758-584c5419e3f1/contexts/memoria_total",
-                "lifespanCount": 1,
+                "lifespanCount": 2,
                 "parameters": {
                     "pregunta": queryText
                 }
