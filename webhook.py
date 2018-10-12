@@ -75,7 +75,7 @@ def makeResponse(req):
                 
         if pregunta:
             return {
-            "fulfillmentText": pregunta +  " - " + producto,        
+            "fulfillmentText": "Concatenando: " + pregunta +  " + " + producto,        
             "source":"example.com",
             "outputContexts": [
                 {
