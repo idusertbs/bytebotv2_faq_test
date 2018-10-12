@@ -50,7 +50,7 @@ def makeResponse(req):
         "source":"example.com",
         "outputContexts": [
                 {
-                "name": "projects/bytebot-faq-demo-1/agent/sessions/30739716-36e5-8e8b-1758-584c5419e3f1/contexts/memoria",
+                "name": "projects/bytebot-faq-demo-1/agent/sessions/30739716-36e5-8e8b-1758-584c5419e3f1/contexts/memoria_total",
                 "lifespanCount": 5,
                 "parameters": {
                     "pregunta": queryText
@@ -68,7 +68,7 @@ def makeResponse(req):
         "source":"example.com",
         "outputContexts": [
             {
-            "name": "projects/bytebot-faq-demo-1/agent/sessions/30739716-36e5-8e8b-1758-584c5419e3f1/contexts/memoria",
+            "name": "projects/bytebot-faq-demo-1/agent/sessions/30739716-36e5-8e8b-1758-584c5419e3f1/contexts/memoria_1",
             "lifespanCount": 5,
             "parameters": {
                 "pregunta": queryText
