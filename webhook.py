@@ -63,6 +63,7 @@ def makeResponse(req):
         #Se debe extraer la pregunta de la memoria_total: parámetro "pregunta"
         #####
 
+        pregunta = False
         outputContexts = queryResult.get("outputContexts")
         for element in outputContexts:
             if element.get("name").find("context_name"):
