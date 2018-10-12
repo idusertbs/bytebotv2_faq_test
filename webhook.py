@@ -37,6 +37,18 @@ def makeResponse(req):
     intentDisplayName = intent.get("displayName")
     queryText = queryResult.get("queryText")
 
+    producto = False
+    outputContexts_producto = queryResult.get("outputContexts")
+    for element in outputContexts_producto:
+        if element.get("name").find("requiere_parametro") > 0:            
+            if element.get("parameters").get("producto") != None:
+                producto = element.get("parameters").get("producto")            
+                break
+            else: 
+                producto = False
+        else:
+            pregunta = False
+
     flagRequiereParametro = False
     if intentDisplayName.find("unico") >= 0 or len(parameters) > 0:
         flagRequiereParametro = False
@@ -44,7 +56,7 @@ def makeResponse(req):
         flagRequiereParametro = True
 
     #Proceso de recolección de parámetro:
-    if flagRequiereParametro:
+    if flagRequiereParametro and not(producto):
         return {
         "fulfillmentText":"¿Para qué producto necesita saber la respuesta?" ,        
         "source":"example.com",
