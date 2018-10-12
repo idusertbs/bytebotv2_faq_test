@@ -66,7 +66,7 @@ def makeResponse(req):
         pregunta = False
         outputContexts = queryResult.get("outputContexts")
         for element in outputContexts:
-            if element.get("name").find("context_name"):
+            if element.get("name").find("memoria_total"):
                 pregunta = element.get("parameters").get("pregunta")
                 producto = element.get("parameters").get("producto")
                 break
