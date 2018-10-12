@@ -31,6 +31,14 @@ def webhook():
 
 def makeResponse(req):
 
+    def find_between( s, first, last ):
+        try:
+            start = s.index( first ) + len( first )
+            end = s.index( last, start )
+            return s[start:end]
+        except ValueError:
+            return ""
+
     queryResult = req.get("queryResult")
     parameters = queryResult.get("parameters")
     intent = queryResult.get("intent")
@@ -53,6 +61,8 @@ def makeResponse(req):
     flagRequiereParametro = False
     if intentDisplayName.find("unico") >= 0 or len(parameters) > 0:
         flagRequiereParametro = False
+        if intentDisplayName.find("unico") >= 0:
+            producto = find_between(".", ".unico", intentDisplayName)
     else:
         flagRequiereParametro = True
 
@@ -101,7 +111,7 @@ def makeResponse(req):
             }
         else:
             return {
-            "fulfillmentText":"La respuesta es:" ,        
+            "fulfillmentText": "Concatenando: " + pregunta +  " + " + producto,
             "source":"example.com",
             "outputContexts": [
                 {
