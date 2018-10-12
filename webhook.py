@@ -38,12 +38,46 @@ def makeResponse(req):
     queryText = queryResult.get("queryText")
 
     flagRequiereParametro = False
-    if intentDisplayName.find("unico") or len(parameters):
+    if intentDisplayName.find("unico") or len(parameters) > 0:
         flagRequiereParametro = False
     else:
         flagRequiereParametro = True 
 
     #Proceso de recolección de parámetro:
+    if flagRequiereParametro:
+        return {
+        "fulfillmentText":"¿Para qué producto necesita saber la respuesta?" ,        
+        "source":"example.com",
+        "outputContexts": [
+                {
+                "name": "projects/bytebot-faq-demo-1/agent/sessions/30739716-36e5-8e8b-1758-584c5419e3f1/contexts/context_name",
+                "lifespanCount": 5,
+                "parameters": {
+                    "pregunta": queryText
+                }
+        }]        
+        }
+
+    else:
+        #Proceso de reformulación
+
+        #####
+
+        return {
+        "fulfillmentText":"La respuesta es:" ,        
+        "source":"example.com",
+        "outputContexts": [
+            {
+            "name": "projects/bytebot-faq-demo-1/agent/sessions/30739716-36e5-8e8b-1758-584c5419e3f1/contexts/context_name",
+            "lifespanCount": 5,
+            "parameters": {
+                "pregunta": queryText
+                }
+        }]        
+        }
+
+
+
 
     return {
         "fulfillmentText":"Hola desde el webhook v2 xd" ,        
@@ -52,14 +86,7 @@ def makeResponse(req):
         "name": "projects/bytebot-faq-demo-1/agent/sessions/30739716-36e5-8e8b-1758-584c5419e3f1/contexts/context_name",
         "lifespanCount": 5,
         "parameters": {
-        "pregunta": queryText
-
-}
-
-}
-
-]
-        
+        "pregunta": queryText}}]        
     }
     
 
