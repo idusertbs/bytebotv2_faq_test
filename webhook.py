@@ -38,9 +38,10 @@ def makeResponse(req):
     queryText = queryResult.get("queryText")
 
     producto = False
+    
     outputContexts_producto = queryResult.get("outputContexts")
     for element in outputContexts_producto:
-        if element.get("name").find("requiere_parametro") > 0:            
+        if element.get("name").find("requiere_parametro") > 0 and queryResult.get("outputContexts") != None:            
             if element.get("parameters").get("producto") != None:
                 producto = element.get("parameters").get("producto")            
                 break
